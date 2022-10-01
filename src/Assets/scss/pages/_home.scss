@@ -1,0 +1,58 @@
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333333;
+    background-color: #ffffff;
+    width: 100%;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    background: url(../../image/register_bg.jpg) top center no-repeat;
+    background-size: cover;
+}
+
+.home-page {
+    height: 100vh;
+    position: relative;
+    background-color: rgba(253, 198, 0, 0.75);
+    padding-top: 2rem;
+    overflow: auto;
+
+    .user-list {
+        margin-top: 1.5rem;
+        .box {
+            position: relative;
+            padding: 30px;
+            text-align: center;
+            border: 3px solid #333333;
+            border-radius: 3px;
+            width: 100%;
+
+            h2 {
+                margin: 0;
+                text-transform: uppercase;
+                font-size: larger;
+                padding-bottom: 20px;
+                font-weight: 400;
+            }
+            h5 {
+                margin-bottom: 10px;
+                font-weight: 700;
+                font-size: inherit;
+            }
+        }
+        .regular-member {
+            float: left;
+        }
+    }
+}
+
+.add-user {
+    .submit-section {
+        text-align: end;
+
+        .btn-cancel {
+            margin-right: 1rem;
+        }
+    }
+}
