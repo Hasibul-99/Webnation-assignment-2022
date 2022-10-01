@@ -73,7 +73,7 @@ export default function Home() {
               </div>
             </div>
             <div className="col-6 col-md-2">
-              <button type="button" className="btn btn-outline-success"
+              <button type="button" className="btn btn-outline-dark px-5"
                 data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => setIsModalOpen(true)}>Add</button>
             </div>
           </div>

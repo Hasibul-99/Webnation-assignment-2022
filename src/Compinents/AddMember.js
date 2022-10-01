@@ -19,7 +19,12 @@ export default function AddMember(props) {
                 <form onSubmit={handleSubmit(data => handelModalSubmit({...data, ...{id: new Date().getTime() }}))}>
                     <div className="mb-3">
                         <label htmlFor="inputName" className="form-label">Name <span className='text-danger'>*</span></label>
-                        <input {...register('name', { required: 'Name is required' })} 
+                        <input {...register('name', { required: 'Name is required',
+                        pattern: {
+                            value: /^[^\s]+(?:$|.*[^\s]+$)/,
+                            message: "Name cant start or end with white spacing"
+                            },
+                        })} 
                             className="form-control" id="inputName" placeholder='Name'/>
                         {errors.name && <p className='text-danger'>{errors.name.message}</p>}
                     </div>
@@ -60,7 +65,7 @@ export default function AddMember(props) {
                     <div className='submit-section'>
                         <button type="button" className="btn btn-light btn-cancel"
                             onClick={() => {setIsModalOpen(false)}}>Cancel</button>  
-                        <button type="submit" className="btn btn-outline-dark">Add</button>
+                        <button type="submit" className="btn btn-outline-dark px-4">Add</button>
                     </div>
                 </form>
             </div>
