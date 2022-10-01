@@ -23,10 +23,15 @@ const customStyles = {
 export default function Home() {
   const [modalIsOpen, setIsModalOpen] = React.useState(false);
   const [users, setUsers] = useState([]);
+  const [allUsers, setAllUsers] = useState([]);
 
   const handelModalSubmit = (values) => {
     users.unshift(values);
     setUsers([...users]);
+
+    allUsers.unshift(values);
+    setAllUsers([...allUsers]);
+
     setIsModalOpen(false);
     toast('User Added Successfully!');
   }
@@ -37,8 +42,20 @@ export default function Home() {
     if (res) {
       let masterData = res?.data;
       setUsers(masterData);
+      setAllUsers(masterData);
     }
   } 
+
+  const searchFilter = (e) => {
+    console.log("al", allUsers);
+
+    let search = e.target.value;
+    let results = allUsers.filter(function(value) {
+      return value.name.toLowerCase().indexOf(search.toLowerCase()) >= 0;
+    });
+
+    setUsers(results);
+  };
 
   useEffect(() => {
     getUserList()
@@ -51,7 +68,8 @@ export default function Home() {
           <div className='row justify-content-md-center'>
             <div className="col-md-8">
               <div className="input-group mb-3">
-                <input type="text" className="form-control" placeholder="Search..." />
+                <input type="text" className="form-control" placeholder="Search..." 
+                  onChange={(e) => searchFilter(e)} />
               </div>
             </div>
             <div className="col-6 col-md-2">
@@ -66,11 +84,11 @@ export default function Home() {
               {
                 users.map(user => <UserContent user={user} key={user.id}></UserContent>)
               }
-              </> : null
+              </> : <Fragment>
+                <h2 className='text-center'>No User Found</h2>
+              </Fragment>
             }
-            
           </div>
-
         </div>
       </div>
 
@@ -84,6 +102,7 @@ export default function Home() {
         <AddMember setIsModalOpen={setIsModalOpen} handelModalSubmit={handelModalSubmit}></AddMember>
       </Modal>
 
+      <Toaster />
     </Fragment>
 
   )
