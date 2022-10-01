@@ -8,6 +8,9 @@ import toast, { Toaster } from 'react-hot-toast';
 
 
 const customStyles = {
+  overlay: {
+    'background-color': 'rgba(0, 0, 0, 0.75)',
+  },
   content: {
     top: '50%',
     left: '50%',
